@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PromedioAcademicoApp.ViewModels"
+             x:Class="PromedioAcademicoApp.Views.PromedioView"
+             x:DataType="vm:PromedioViewModel"
+             Title="Promedio Académico">
+
+    <ScrollView Padding="24">
+        <VerticalStackLayout Spacing="16" MaximumWidthRequest="480">
+            <Label Text="Cálculo de Promedio Académico"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
+            <Label Text="Calificación Unidad 1 (0 - 10)" />
+            <Entry Placeholder="Ej. 8.0"
+                   Keyboard="Numeric"
+                   Text="{Binding Calificacion1Texto, Mode=TwoWay}" />
+
+            <Label Text="Calificación Unidad 2 (0 - 10)" />
+            <Entry Placeholder="Ej. 9.0"
+                   Keyboard="Numeric"
+                   Text="{Binding Calificacion2Texto, Mode=TwoWay}" />
+
+            <Label Text="Calificación Unidad 3 (0 - 10)" />
+            <Entry Placeholder="Ej. 10.0"
+                   Keyboard="Numeric"
+                   Text="{Binding Calificacion3Texto, Mode=TwoWay}" />
+
+            <Button Text="Calcular promedio"
+                    Command="{Binding CalcularPromedioCommand}" />
+
+            <Label Text="{Binding MensajeError}"
+                   TextColor="Red"
+                   IsVisible="{Binding TieneError}" />
+
+            <Frame Padding="16" CornerRadius="10" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <HorizontalStackLayout Spacing="6">
+                        <Label Text="Promedio:" FontAttributes="Bold" />
+                        <Label Text="{Binding PromedioTexto}" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="6">
+                        <Label Text="Nivel:" FontAttributes="Bold" />
+                        <Label Text="{Binding NivelTexto}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
